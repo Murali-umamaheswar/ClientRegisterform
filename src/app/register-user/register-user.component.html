@@ -29,34 +29,23 @@
                   <mat-error *ngIf="password.invalid">Password is required</mat-error>
                 <mat-icon matSuffix>lock</mat-icon>
               </mat-form-field>
-              <a routerLink="/home" >
-                <button
-                mat-raised-button
-                color="primary"
-                (click)="OnLogin()"
-                class="login-button" [disabled]="myForm.form.invalid">
-                Sign In
-                </button>
-              </a>
-                
+              <a routerLink="/home" style="text-decoration: none;">
+                <button color="primary"  type="submit" [disabled]="!myForm.valid">login</button>
+              </a>   
             </form>
             
           </mat-card-content>
       </mat-tab>
-      <mat-tab label="Register">
+      
+      <mat-tab label="Register" >
         <mat-card-content>
-          <form #registerForm="ngForm">
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
             <mat-form-field>
               <input
-                matInput
-                placeholder="First Name"
-                required
-                name="firstname"
-                ngModel
-                #firstname="ngModel">
+              type="text" matInput placeholder="First Name" formControlName="firstname">
               <mat-icon matSuffix>perm_identity</mat-icon>
               <mat-error
-                *ngIf="firstname.invalid">
+              *ngIf="this.registerForm.get('firstname')?.touched && this.registerForm.get('firstname')?.hasError('required')">
                 Firstname is required
               </mat-error>
 
@@ -64,41 +53,29 @@
 
             <mat-form-field>
               <input
-                matInput
-                placeholder="Last Name"
-                required
-                name="lastname"
-                ngModel
-                #lastname="ngModel">
+              type="text" matInput placeholder="Last Name" formControlName="lastname">
               <mat-icon matSuffix>perm_identity</mat-icon>
               <mat-error
-                *ngIf="lastname.invalid">
+              *ngIf="this.registerForm.get('lastname')?.touched && this.registerForm.get('lastname')?.hasError('required')">
                 Lastname is required
               </mat-error>
             </mat-form-field>
 
             <mat-form-field>
               <input
-                matInput
-                placeholder="Email"
-                required
-                name="email"
-                ngModel
-                #email="ngModel">
-                <mat-error *ngIf="email.invalid">Email is required</mat-error>
+              type="email"
+               matInput 
+               placeholder="Email" 
+               formControlName="email">
+                <mat-error *ngIf="this.registerForm.get('email')?.touched && this.registerForm.get('email')?.hasError('required')">Email is required</mat-error>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field>
               <input
-                matInput
-                placeholder="User Name"
-                required
-                name="username"
-                ngModel
-                #username="ngModel">
+              type="text" matInput placeholder="Username" formControlName="username">
               <mat-icon matSuffix>perm_identity</mat-icon>
               <mat-error
-                *ngIf="username.invalid">
+              *ngIf="this.registerForm.get('username')?.touched && this.registerForm.get('username')?.hasError('required')">
                 Username is required
               </mat-error>
             </mat-form-field>
@@ -108,44 +85,32 @@
                 matInput
                 placeholder="Password"
                 type="password"
-                required
-                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
-                name="password"
-                ngModel
-                #password="ngModel">
+                formControlName="password">
                 <mat-error
-                *ngIf="password.invalid">
+                *ngIf="this.registerForm.get('password')?.touched && this.registerForm.get('password')?.hasError('required')">
                 password with one uppercase,one lowercase,special char & number
                 </mat-error>
                 
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
-            <mat-form-field class="form-gruop">
-                <input
-                matInput
-                placeholder="Retype Password"
-                type="password"
-                required
-                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
-                name="repassword"
-                ngModel
-                #repassword="ngModel">
-                <mat-error
-                *ngIf="repassword.touched && repassword.value != password.value">
-                password and confirmed password must be match
-                </mat-error>
-              <mat-icon matSuffix>lock</mat-icon>
+
+            <mat-form-field>
+              <input type="password" matInput placeholder="Password Confirmation" formControlName="passwordConfirm">
+              <mat-error
+                *ngIf="this.registerForm.get('passwordConfirm')?.touched && this.registerForm.get('passwordConfirm')?.hasError('required')">
+                Password Confirmation is required</mat-error>
+              
+                <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
-           
-           <button
-              mat-raised-button
-              color="primary"
-              class="login-button"
-              (click)="OnRegister()"
-              [disabled]="registerForm.form.invalid">
-              Register
-           </button> 
+    
+            <mat-error
+                *ngIf="this.registerForm.get('passwordConfirm')?.dirty && this.registerForm.hasError('passwordsNotMatching')">
+                Passwords are not matching!
+            </mat-error>
             
+              <!-- Button is disabled(not clickable), if our RegisterForm contains Validation Errors -->
+              
+              <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.valid">Register</button>
           </form>
         </mat-card-content>
       </mat-tab>
@@ -153,7 +118,7 @@
   </mat-card>
 </div>
 
-<router-outlet></router-outlet>
+
 
 
 
