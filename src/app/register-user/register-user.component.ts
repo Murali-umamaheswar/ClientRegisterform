@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../custom.validator';
+import { register } from '../register';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-user',
@@ -8,7 +10,10 @@ import { CustomValidators } from '../custom.validator';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
-  
+
+  constructor(private http:HttpClient){}
+
+  user = new register("","","","")
   
   ngOnInit(): void {
     
@@ -31,9 +36,11 @@ export class RegisterUserComponent implements OnInit {
     { validators: CustomValidators.passwordsMatching }
   )
 
-  register(){
-    alert("registration completed")
+  Onsubmit(data:any){
+    this.http.post("http://localhost:8080/registerUser",data).subscribe((result)=>{console.log("result",result)})
+    console.log(data)
   }
+
 
   
 }
