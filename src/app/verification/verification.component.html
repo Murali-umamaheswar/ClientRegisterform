@@ -1,10 +1,13 @@
 
 
 <div class="verificationBody">
+    <div class="box">
         <h1>Account verification</h1>
         <form [formGroup]="verifyForm" (ngSubmit)="Onverify(verifyForm.value)" >
             <input type="text" formControlName="code" > 
             <br/>
             <button class="mt-3 btn btn-primary" type="submit" [disabled]="!verifyForm.valid">Verify</button>
-        </form>    
+        </form>  
+    </div>
+          
 </div>
