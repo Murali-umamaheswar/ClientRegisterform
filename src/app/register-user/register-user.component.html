@@ -4,36 +4,46 @@
     <mat-tab-group mat-stretch-tabs class="">
       <mat-tab label="Sign In">
           <mat-card-content>
-            <form #myForm="ngForm">
+            <form  [formGroup]="loginForm" (ngSubmit)="loginProcess(loginForm.value)">
               <mat-form-field >
                 <input
-                  matInput
-                  placeholder="Email"
-                  required
-                  name="email"
-                  ngModel
-                  #email="ngModel">
-                  <mat-error *ngIf="email.invalid">Email is required</mat-error>
-                <mat-icon matSuffix>email</mat-icon>
+              type="email"
+               matInput 
+               placeholder="Email" 
+               formControlName="email">
+                <mat-error *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+              <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
               <mat-form-field>
+                <input
+                type="text" matInput placeholder="Username" formControlName="username">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                
+                <mat-error
+                *ngIf="this.loginForm.get('username')?.touched && this.loginForm.get('username')?.hasError('required')">
+                  Username is required
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field  >
                 <input
                   matInput
                   placeholder="Password"
                   type="password"
-                  required
-                  name="password"
-                  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
-                  ngModel
-                  #password="ngModel">
-                  <mat-error *ngIf="password.invalid">Password is required</mat-error>
+                  formControlName="password">
+                  <mat-error
+                  *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+                  password with one uppercase,one lowercase,special char & number
+                  </mat-error>
                 <mat-icon matSuffix>lock</mat-icon>
               </mat-form-field>
+              
               <div class="buttonsetup">
-                <a routerLink="/home" style="text-decoration: none;">
-                  <button color="primary" type="submit" [disabled]="!myForm.valid">SignIn</button>
-                </a> 
+                  <button color="primary" type="submit" [disabled]="!loginForm.valid">
+                    SignIn 
+                  </button> 
               </div>
+              <p class="text-center mt-2 ">{{message}}</p>
                 
             </form>
             
@@ -45,10 +55,10 @@
           <form [formGroup]="registerForm" (ngSubmit)="Onsubmit(registerForm.value)">
             <mat-form-field>
               <input
-              type="text" matInput placeholder="First Name" formControlName="firstname">
+              type="text" matInput placeholder="First Name" formControlName="first_name">
               <mat-icon matSuffix>perm_identity</mat-icon>
               <mat-error
-              *ngIf="this.registerForm.get('firstname')?.touched && this.registerForm.get('firstname')?.hasError('required')">
+              *ngIf="this.registerForm.get('first_name')?.touched && this.registerForm.get('first_name')?.hasError('required')">
                 Firstname is required
               </mat-error>
 
@@ -56,10 +66,10 @@
 
             <mat-form-field>
               <input
-              type="text" matInput placeholder="Last Name" formControlName="lastname">
+              type="text" matInput placeholder="Last Name" formControlName="last_name">
               <mat-icon matSuffix>perm_identity</mat-icon>
               <mat-error
-              *ngIf="this.registerForm.get('lastname')?.touched && this.registerForm.get('lastname')?.hasError('required')">
+              *ngIf="this.registerForm.get('last_name')?.touched && this.registerForm.get('last_name')?.hasError('required')">
                 Lastname is required
               </mat-error>
             </mat-form-field>
@@ -77,6 +87,7 @@
               <input
               type="text" matInput placeholder="Username" formControlName="username">
               <mat-icon matSuffix>perm_identity</mat-icon>
+              
               <mat-error
               *ngIf="this.registerForm.get('username')?.touched && this.registerForm.get('username')?.hasError('required')">
                 Username is required
@@ -93,7 +104,6 @@
                 *ngIf="this.registerForm.get('password')?.touched && this.registerForm.get('password')?.hasError('required')">
                 password with one uppercase,one lowercase,special char & number
                 </mat-error>
-                
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 

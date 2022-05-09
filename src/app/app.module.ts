@@ -15,13 +15,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VerificationComponent } from './verification/verification.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterUserComponent,
-    HomeComponent
+    HomeComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

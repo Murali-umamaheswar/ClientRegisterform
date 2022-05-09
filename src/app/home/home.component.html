@@ -9,11 +9,12 @@
 <!-- css file -->
 <link rel="stylesheet" href="../home/home.component.css">
 
+
  <!-- font awesome icon -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
-    <nav>
-        <div class="nav-responsive">
+    <nav >
+        <div class="nav-responsive" style="padding-bottom: 0px;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDTwodp3st443lERHOcgERQjGAIW6yCL_GAw&usqp=CAU" alt="image" class="logo" id="logo">
             <div class="nav-search">
                 <a href="">
@@ -23,25 +24,33 @@
                 <input type="text" id="search" placeholder="search">
             </div>
             <div class="access">
-                <a href="#" id="cart"><i class="fa fa-shopping-cart"></i></a>
-                <a href="#" id="account"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <a  id="cart"><i class="fa fa-shopping-cart"></i></a>
+                <div class="container">
+                    <a  id="account"><i class="fa fa-user-circle-o"></i></a>
+                    <div class="middle">
+                      
+                      <div class="text" style="color: blue;">{{userDisplayName}}</div>
+                    </div>
+                </div>
+                <a href="#" id="cart"><i class="fa fa-sign-out"></i></a>
             </div>
+            
+            
         </div>      
     </nav>
 
 <!-- main section -->
 <main id="main" >
 <!-- categories section -->
-
 <!-- samsung Phones -->
 <section class="categories">
-    <div class="title-container">
+    <div class="title-container" style="padding-top: 30px;">
         <h1 id="title" class="title">Samsung Mobiles</h1>
     </div>
-    <div class="card">
-    <div class="item-container" id="1">
-      <div class="card-item">
-        <img src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-f127gzkiins/gallery/in-galaxy-f12-4gb-ram-sm-f127gzkiins-419015708?$684_547_PNG$"  id="card-img">
+    <div class="card" >
+    <div class="item-container" id="1" (click)="openPopup()" >
+      <div class="card-item" >
+        <img src="assets/images/galaxy-f12.webp" id="card-img" (click)="getImageUrl($event)" >
         <p id="item-name">
             <span class="heading">Samsung F12</span>
             <li class="list">Display:16.50cm</li>
@@ -54,9 +63,9 @@
         <a class="add-cart cart1" href="">Add To Cart</a>            
    </div>
 
-    <div class="item-container" id="2">
+    <div class="item-container" id="2" (click)="openPopup()">
     <div class="card-item">
-        <img src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m526blbhinu/gallery/in-galaxy-m52-5g-m526-sm-m526blbhinu-514950436?$684_547_PNG$"  id="card-img">
+        <img src="assets/images/galaxy-m52.webp"  id="card-img" (click)="getImageUrl($event)" >
         <p id="item-name">
             <span class="heading">Samsung M52</span>
                 <li class="list">Display:16.26cm</li>
@@ -69,9 +78,9 @@
         <a class="add-cart cart1" href="">Add To Cart</a>            
     </div>
 
-    <div class="item-container" id="3">
+    <div class="item-container" id="3" (click)="openPopup()">
     <div class="card-item">
-    <img src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-e225fzkhins/gallery/in-galaxy-f22-6gb-ram-sm-e225fzkhins-470144408?$684_547_PNG$"  id="card-img">
+    <img src="assets/images/galaxy-f22.webp"  id="card-img" (click)="getImageUrl($event)">
     <p id="item-name">
         <span class="heading">Samsung F22</span>
             <li class="list">Display:16.26cm</li>
@@ -84,9 +93,9 @@
     <a class="add-cart cart1" href="">Add To Cart</a>              
     </div>
 
-    <div class="item-container" id="4">
+    <div class="item-container" id="4" (click)="openPopup()">
     <div class="card-item">
-    <img src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m127gzbhins/gallery/in-galaxy-m-sm-m127gzbhins-sm-m---gzbgins-405435076?$684_547_PNG$"  id="card-img">
+    <img src="assets/images/galaxy-m12.webp"  id="card-img" (click)="getImageUrl($event)" >
     <p id="item-name">
         <span class="heading">Samsung M12</span>
             <li class="list">Display:16.55cm</li>
@@ -109,9 +118,9 @@
         
     </div>
     <div class="card">
-        <div class="item-container" id="5">
+        <div class="item-container" id="5" (click)="openPopup()">
             <div class="card-item">
-                <img src="https://www.91-img.com/pictures/146466-v2-vivo-y21-2021-mobile-phone-large-1.jpg?tr=q-80"  id="card-img">
+                <img src="assets/images/vivo-y21.webp"  id="card-img" (click)="getImageUrl($event)" >
                 <p id="item-name">
                     <span class="heading">Vivo  Y21</span>
                     <li class="list">Display:16.55cm</li>
@@ -127,9 +136,9 @@
 
 
 
-        <div class="item-container"  id="6">
+        <div class="item-container"  id="6" (click)="openPopup()">
             <div class="card-item">
-                <img src="https://www.91-img.com/pictures/142175-v1-vivo-y20g-mobile-phone-large-1.jpg?tr=q-80" id="card-img">
+                <img src="assets/images/vivo-y20.webp" id="card-img" (click)="getImageUrl($event)" >
                 <p id="item-name">
                     <span class="heading">Vivo  Y20G</span>
                     <li class="list">Display:16.55cm</li>
@@ -143,10 +152,10 @@
             <a class="add-cart cart1" >Add To Cart</a>              
         </div>
 
-        <div class="item-container"  id="7">
+        <div class="item-container"  id="7" (click)="openPopup()">
 
             <div class="card-item">
-                <img src="https://www.91-img.com/pictures/147524-v7-vivo-t1-mobile-phone-large-1.jpg?tr=q-80"  id="card-img">
+                <img src="assets/images/vivo-t1.webp"  id="card-img" (click)="getImageUrl($event)" >
                 <p id="item-name">
                     <span class="heading">Vivo T1 5G </span>
                     <li class="list">Display:16.71cm</li>
@@ -160,9 +169,9 @@
             <a class="add-cart cart1" >Add To Cart</a>              
         </div>
 
-        <div class="item-container" id="8">
+        <div class="item-container" id="8" (click)="openPopup()">
             <div class="card-item">
-                <img src="https://www.91-img.com/pictures/144991-v2-vivo-y75-5g-mobile-phone-large-1.jpg?tr=q-80"  id="card-img">
+                <img src="assets/images/vivo-y75.webp"  id="card-img" (click)="getImageUrl($event)" >
                 <p id="item-name">
                     <span class="heading">Vivo Y75 5G</span>
                     <li class="list">Display:16.55cm</li>
@@ -187,9 +196,9 @@
     </div>
     <div class="card">
 
-    <div class="item-container" id="9">
+    <div class="item-container" id="9" (click)="openPopup()">
     <div class="card-item">
-    <img src="https://www.91-img.com/pictures/148313-v2-realme-50a-prime-mobile-phone-medium-1.jpg?tr=q-80"  id="card-img">
+    <img src="assets/images/realme-50a.webp"  id="card-img" (click)="getImageUrl($event)" >
     <p id="item-name">
         <span class="heading">Realme 50a Prime</span>
         <li class="list">Display:16.76cm</li>
@@ -202,9 +211,9 @@
     <a class="add-cart cart1" >Add To Cart</a>              
 </div>
 
-    <div class="item-container" id="10">
+    <div class="item-container" id="10" (click)="openPopup()">
     <div class="card-item">
-    <img src="https://www.91-img.com/pictures/150104-v3-realme-9-8gb-ram-mobile-phone-medium-1.jpg?tr=q-80"  id="card-img">
+    <img src="assets/images/realme-9.webp"  id="card-img" (click)="getImageUrl($event)" >
     <p id="item-name">
         <span class="heading">Realme 9</span>
             <li class="list">Display:16.26cm</li>
@@ -217,9 +226,9 @@
     <a class="add-cart cart1" >Add To Cart</a>               
     </div>
 
-        <div class="item-container" id="11">
+        <div class="item-container" id="11" (click)="openPopup()">
         <div class="card-item">
-        <img src="https://www.91-img.com/pictures/150101-v1-realme-gt-2-pro-5g-256gb-mobile-phone-medium-1.jpg?tr=q-80"  id="card-img">
+        <img src="assets/images/realme-gt.webp"  id="card-img" (click)="getImageUrl($event)" >
         <p id="item-name">
         <span class="heading">Realme GT 2 pro</span>
         <li class="list">Display:17.02cm</li>
@@ -232,9 +241,9 @@
         <a class="add-cart cart1" >Add To Cart</a>               
     </div>
 
-        <div class="item-container" id="12">
+        <div class="item-container" id="12" (click)="openPopup()">
         <div class="card-item">
-        <img src="https://www.91-img.com/pictures/146541-v1-realme-narzo-50-5g-mobile-phone-medium-1.jpg?tr=q-80"  id="card-img">
+        <img src="assets/images/realme-narzo-50.webp"  id="card-img" (click)="getImageUrl($event)" >
         <p id="item-name">
         <span class="heading">Realme Narzo 50</span>
             <li class="list">Display:16.55cm</li>
@@ -256,9 +265,9 @@
         <h1 id="title" class="title">Xiaomi Redmi Mobiles </h1>
     </div>
     <div class="card">
-    <div class="item-container" id="13">
+    <div class="item-container" id="13" (click)="openPopup()" >
     <div class="card-item">
-        <img src="https://www.91-img.com/pictures/148317-v2-xiaomi-redmi-10-2022-mobile-phone-large-1.jpg?tr=q-80" id="card-img">
+        <img src="assets/images/redmi-10.webp" id="card-img" (click)="getImageUrl($event)" >
         <p id="item-name">
         <span class="heading">Xiaomi Redmi 10</span>
           <li class="list">Disply:16.51cm</li>
@@ -271,9 +280,9 @@
         <a class="add-cart cart1" >Add To Cart</a>               
     </div>
 
-    <div class="item-container" id="14">
+    <div class="item-container" id="14" (click)="openPopup()">
     <div class="card-item">
-        <img src="https://www.91-img.com/pictures/145393-v2-xiaomi-mi-12-pro-mobile-phone-medium-1.jpg?tr=q-80"  id="card-img">
+        <img src="assets/images/redmi-12.webp"  id="card-img" (click)="getImageUrl($event)" >
     <p id="item-name">
         <span class="heading">Xiaomi Mi 12</span>
           <li class="list">Display:17.02cm</li>
@@ -286,9 +295,9 @@
     <a class="add-cart cart1" >Add To Cart</a>               
     </div>
 
-    <div class="item-container" id="15">
+    <div class="item-container" id="15" (click)="openPopup()">
     <div class="card-item">
-    <img src="https://www.91-img.com/pictures/149398-v2-xiaomi-redmi-k50-gaming-edition-mobile-phone-medium-1.jpg?tr=q-80" id="card-img">
+    <img src="assets/images/redmi-k50.webp" id="card-img" (click)="getImageUrl($event)" >
     <p id="item-name">
         <span class="heading">Xiaomi Redmi k50</span>
             <li class="list">Display:16.94cm</li>
@@ -301,9 +310,9 @@
     <a class="add-cart cart1" >Add To Cart</a>              
     </div>
 
-    <div class="item-container" id="16">
+    <div class="item-container" id="16" (click)="openPopup()">
     <div class="card-item">
-    <img src="https://www.91-img.com/pictures/149239-v6-xiaomi-redmi-note-11-pro-4g-mobile-phone-medium-1.jpg?tr=q-80"  id="card-img">
+    <img src="assets/images/redmi-note-11-pro.webp"  id="card-img" (click)="getImageUrl($event)" >
     <p id="item-name">
     <span class="heading">Oppo A57</span>
             <li class="list">Display:16.91cm</li>
@@ -318,6 +327,28 @@
     </div>
 </section>
 <!-- end of redmi phones -->
+<div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':displayStyle}" (click)="closePopup()">
+    <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+        <div class="modal-header">
+            <p>Mobile large view</p>
+        </div>
+        <div class="modal-body" >
+          <img src={{imageUrl}} style="width: 100%;">
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+            Close
+        </button>
+        </div>
+    </div>
+    </div>
+</div>
 
 
 </main>

@@ -1,6 +1,7 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
 
 export class CustomValidators {
+  [x: string]: any;
   static passwordsMatching(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const passwordConfirm = control.get('passwordConfirm')?.value;
@@ -12,5 +13,7 @@ export class CustomValidators {
       return { passwordsNotMatching: true };
     }
   }
+
+  
 
 }
