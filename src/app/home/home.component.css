@@ -1,4 +1,20 @@
 
+.im{
+    
+    cursor: zoom-in;
+    overflow: hidden;
+    transition: transform .2s;
+    border-radius: 5px;
+    padding-bottom:10px;}
+.im:hover{
+transform: scale(1.5);
+}
+.select{
+    font-size:medium;
+}
+
+
+
 #myImg {
     border-radius: 5px;
     cursor: pointer;
@@ -228,6 +244,7 @@ body{
 /* main section */
 #main{
     margin-top: 5rem;
+    background-color: lightblue;
 }
 #categories{
     margin: 10px;

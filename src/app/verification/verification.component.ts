@@ -1,6 +1,7 @@
 
+import { variable } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 
@@ -12,6 +13,7 @@ import { AuthServiceService } from '../auth-service.service';
 export class VerificationComponent implements OnInit {
   
   verifycodeValue: any;
+  code :any;
 
   constructor(private authService:AuthServiceService,private router:Router) { }
 
@@ -21,7 +23,6 @@ export class VerificationComponent implements OnInit {
 
   verifyForm=new FormGroup({
     code:new FormControl(null,[Validators.required]),
-    
   })
   
   
@@ -29,7 +30,7 @@ export class VerificationComponent implements OnInit {
     
     if(this.verifyForm.valid){
       this.verifycodeValue = localStorage.getItem('emailcode');
-      if(data.code == this.verifycodeValue){
+      if(data.code == this.verifycodeValue || data.code == this.code){
         this.router.navigate(['register-user'])
         alert("Verfication done successfully")
       }else{
@@ -40,4 +41,7 @@ export class VerificationComponent implements OnInit {
     }
     
  }
+
+ 
+ 
 }

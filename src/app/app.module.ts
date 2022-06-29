@@ -16,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationComponent } from './verification/verification.component';
+import { CountdownModule } from 'ngx-countdown';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { VerificationComponent } from './verification/verification.component';
     AppComponent,
     RegisterUserComponent,
     HomeComponent,
-    VerificationComponent
+    VerificationComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { VerificationComponent } from './verification/verification.component';
     MatCheckboxModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CountdownModule
   ],
   exports:[AppRoutingModule,HomeComponent,RegisterUserComponent],
 

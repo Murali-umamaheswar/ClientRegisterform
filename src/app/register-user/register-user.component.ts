@@ -76,18 +76,16 @@ export class RegisterUserComponent implements OnInit {
           console.log(result.Message)
           alert(result.Message)
           this.router.navigate(['verification'])
+          this.authService.verifyUser(this.registerForm.value).subscribe(result=>{
+            this.code =(result.Message).toString()
+            alert("code as send your mail")
+            localStorage.setItem('emailcode', this.code);
+          })
           
         }else{
           alert(result.Message)
         }
-      })
-
-      this.authService.verifyUser(this.registerForm.value).subscribe(result=>{
-        this.code =(result.Message).toString()
-        alert("code as send your mail")
-        localStorage.setItem('emailcode', this.code);
-      })
-      
+      }) 
     }
   }   
 }
